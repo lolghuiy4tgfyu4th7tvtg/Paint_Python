@@ -29,7 +29,7 @@ def draw(event):
         drawer.ellipse((event.x - int(value) // 2, event.y - int(value) // 2,
                   event.x + int(value) // 2, event.y + int(value) // 2), hx)
     else:
-        mbox.showerror("Ошибка", "Выберите цвет для рисования!")
+        mbox.showerror("Error", "Choose A Color First")
 
 
 def dalate():
@@ -61,14 +61,14 @@ def zal():
         del im
         col = (int(rgb[0]), int(rgb[1]), int(rgb[2]))
     else:
-        mbox.showerror("Ошибка", "Выберите цвет заливки!")
+        mbox.showerror("Error", "Choose A Color First")
 
 
 def save():
     if not os.path.exists(f'{text.get()}.png'):
         image.save(f'{text.get()}.png')
     else:
-        mbox.showerror("Ошибка", "Файл с таким именем существует!")
+        mbox.showerror("Error", "File Already Exists!")
 
 
 def color():
@@ -83,12 +83,12 @@ drawer = ImageDraw.Draw(image)
 variable = StringVar(root)
 shr = OptionMenu(root, variable, 15, 1, 5, 10, 15, 20, 25, 30, 35, 40, 50, 60, 70, 80, 90, 100)
 
-bytton = tkinter.ttk.Button(root, text='Выбрать цвет', command=color)
-btn = tkinter.ttk.Button(root, text='Очистить всё', command=dalate)
-btno = tkinter.ttk.Button(root, text='Заливка', command=zal)
-lable = tkinter.ttk.Label(root, text='Размер кисти:')
-lable_2 = tkinter.ttk.Label(root, text='Цвет кисти (заливки):')
-lable_3 = tkinter.ttk.Label(root, text='Название файла:')
+bytton = tkinter.ttk.Button(root, text='Color', command=color)
+btn = tkinter.ttk.Button(root, text='Clear', command=dalate)
+btno = tkinter.ttk.Button(root, text='Fill', command=zal)
+lable = tkinter.ttk.Label(root, text='Brush Size:')
+lable_2 = tkinter.ttk.Label(root, text='Brush Fill:')
+lable_3 = tkinter.ttk.Label(root, text='File Name:')
 btn2 = tkinter.ttk.Button(root, text='Save', command=save)
 text = tkinter.ttk.Entry()
 canvas.bind("<B1-Motion>", draw)
